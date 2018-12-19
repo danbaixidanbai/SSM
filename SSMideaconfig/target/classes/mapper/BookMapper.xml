@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <mapper namespace="com.dao.BookMapper">
+   		<select id="findBookPriceByIsbn" resultType="int">
+   			select price from book where isbn=#{isbn}
+   		</select>
+   		<select id="getBookKuCunByIsbn" resultType="int">
+   			select kucun from book where isbn=#{isbn}
+   		</select>
+   		<select id="getMoneyByUserName" resultType="int">
+   			select money from account where username=#{userName}
+   		</select>
+   		<update id="updateBookStock" >
+   			update Book  set kucun=kucun-1 where isbn=#{isbn}
+   		</update>
+   		
+   		<update id="updateUserAccount">
+   			update Account a set a.money = a.money - #{price} WHERE a.userName = #{userName}
+   		</update>
+   </mapper>
